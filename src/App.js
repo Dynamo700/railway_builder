@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import { Reorder } from "framer-motion";
 
-function App() {
+const InitialItems = ["Track 1", "Track 2", "Track 3", "Building 1"];
+
+export default function App() {
+  const [items, setItems] = useState(InitialItems);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Reorder.Group values={items} onReorder={setItems}>
+      {items.map(item => (
+        <Reorder.Item key={item} value={item}>
+          {item}
+        </Reorder.Item>
+      ))}
+    </Reorder.Group>
+  )
 }
-
-export default App;
