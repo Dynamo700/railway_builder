@@ -2,7 +2,13 @@ import './App.css';
 import { useState } from "react";
 import { Reorder } from "framer-motion";
 
-const InitialItems = ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5", "Building 1", "Building 2"];
+const InitialItems = ["Track 1", 
+                      "Track 2", 
+                      "Track 3", 
+                      "Track 4", 
+                      "Track 5", 
+                      "Building 1", 
+                      "Building 2"];
 
 export default function App() {
   const [initialItems, setInitialItems] = useState(InitialItems);
