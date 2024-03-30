@@ -20,32 +20,78 @@ const InitialItems = {
     const [positions, setPositions] = useState(InitialItems);
   
     const handleDrag = (event, info, id) => {
-      const { point } = info;
+      const sandbox = document.getElementById('sandbox');
+      const { left, top, right, bottom } = sandbox.getBoundingClientRect();
+      const {x, y} = info.point;
       // Update the position for the dragged item
-      setPositions((prev) => ({
-        ...prev,
-        [id]: { x: point.x, y: point.y },
-      }));
+
+      // Check if the item was dropped inside of the sandbox area
+      if (x > left && x < right && y > top && y < bottom) {
+        setPositions((prev) => ({
+          ...prev,
+          [id]: { ...prev[id], x: x - left, y: y - top, inSandbox: true },
+        }));
+      }
     };
   
     return (
       <div>
         <h2>Items</h2>
-        {Object.entries(positions).map(([id, pos]) => (
-          <motion.div
-            key={id}
-            drag
-            dragConstraints={{ left: 0, top: 0, right: 300, bottom: 300 }}
-            onDrag={(event, info) => handleDrag(event, info, id)}
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div>
+            {Object.entries(positions).map(([id, pos]) => {
+              if (!pos.inSandbox) {
+                return (
+                  <motion.div
+                    key={id}
+                    drag
+                    onDragEnd={(event, info) => handleDrag(event, info, id)}
+                    style={{
+                      marginBottom: '10px',
+                      cursor: 'grab',
+                      padding: '10px',
+                      border: '1px solid black',
+                    }}
+                  >
+                    {id}
+                  </motion.div>
+                );
+              } else return null;
+            })}
+          </div>
+          <div
+            id="sandbox"
             style={{
-              x: pos.x,
-              y: pos.y,
-              // Plus any additional styling
+              height: '550px',
+              width: '800px',
+              border: '2px solid green',
+              position: 'relative',
             }}
           >
-            {id}
-          </motion.div>
-        ))}
+            <h3>Sandbox</h3>
+            {Object.entries(positions).map(([id, pos]) => {
+              if (pos.inSandbox) {
+                return (
+                  <motion.div
+                    key={id}
+                    drag
+                    dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                    style={{
+                      x: pos.x,
+                      y: pos.y,
+                      position: 'absolute',
+                      cursor: 'grab',
+                      padding: '10px',
+                      border: '1px solid black',
+                    }}
+                  >
+                    {id}
+                  </motion.div>
+                );
+              } else return null;
+            })}
+          </div>
+        </div>
       </div>
     );
   }
