@@ -3,12 +3,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const PngComponents = {
-  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="30%" width="30%" />,
+  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="90%" width="90%" />
   
 };
 
 const InitialItems = {
-  'track 1': {x: 0, y: 0, inSandbox: false}, // Ensure `inSandbox` is part of initial state
+  'track 1': {x: 0, y: 0, inSandbox: false} // Ensure `inSandbox` is part of initial state
   
 };
 
@@ -42,7 +42,9 @@ export default function App() {
                   drag
                   onDragEnd={(event, info) => handleDrag(event, info, id)}
                   style={{
-                    marginBottom: '10px',
+                    height: '60px',
+                    width: '250px',
+                    marginBottom: '5px',
                     cursor: 'grab',
                     padding: '10px',
                     border: '1px solid black',
