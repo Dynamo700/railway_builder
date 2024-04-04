@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const PngComponents = {
-  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="90%" width="90%" />
+  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="140%" width="100%" />
   
 };
 
@@ -42,7 +42,7 @@ export default function App() {
                   drag
                   onDragEnd={(event, info) => handleDrag(event, info, id)}
                   style={{
-                    height: '60px',
+                    height: '75px',
                     width: '250px',
                     marginBottom: '5px',
                     cursor: 'grab',
