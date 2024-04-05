@@ -3,12 +3,18 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const PngComponents = {
-  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="140%" width="100%" />
+  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="140%" width="100%" />,
+  'track 2': <img src="/images/Track_2.PNG" alt="track 2" height="140%" width="100%" />,
+  'track 3': <img src="/images/Track_3.PNG" alt="track 3" height="140%" width="100%" />
+  
+
   
 };
 
 const InitialItems = {
-  'track 1': {x: 0, y: 0, inSandbox: false} // Ensure `inSandbox` is part of initial state
+  'track 1': {x: 0, y: 0, inSandbox: false}, // Ensure `inSandbox` is part of initial state
+  'track 2': {x: 0, y: 0, inSandbox: false},
+  'track 3': {x: 0, y: 0, inSandbox: false}
   
 };
 
