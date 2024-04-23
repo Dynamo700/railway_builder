@@ -43,13 +43,7 @@ export default function App() {
     <div>
       <h2>Items</h2>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div id="items" style={{
-          height: '550px',
-          width: '350px',
-          border: '2px solid black',
-          position: 'relative', // Corrected from 'bottom' to 'relative'
-          overflow: 'auto' // Added to enable scrolling within the container if needed
-        }}>
+        <div>
           {Object.entries(positions).map(([id, pos]) => {
             if (!pos.inSandbox) {
               return (
@@ -64,22 +58,23 @@ export default function App() {
                     cursor: 'grab',
                     padding: '10px',
                     border: '1px solid black',
-                    backgroundColor: 'white' 
                   }}
                 >
-                  {PngComponents[id]}
+                  {PngComponents[id] || id}
                 </motion.div>
               );
-            }
-            return null;
+            } else return null;
           })}
         </div>
-        <div id="sandbox" style={{
-          height: '550px',
-          width: '800px',
-          border: '2px solid green',
-          position: 'relative'
-        }}>
+        <div
+          id="sandbox"
+          style={{
+            height: '550px',
+            width: '800px',
+            border: '2px solid green',
+            position: 'relative',
+          }}
+        >
           <h3>Sandbox</h3>
           {Object.entries(positions).map(([id, pos]) => {
             if (pos.inSandbox) {
@@ -94,14 +89,13 @@ export default function App() {
                     position: 'absolute',
                     cursor: 'grab',
                     padding: '10px',
-                    border: '1px solid black'
+                    border: '1px solid black',
                   }}
                 >
-                  {PngComponents[id]}
+                  {PngComponents[id] || id}
                 </motion.div>
               );
-            }
-            return null;
+            } else return null;
           })}
         </div>
       </div>
