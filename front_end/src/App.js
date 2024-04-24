@@ -3,11 +3,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const PngComponents = {
-  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="140%" width="100%" />,
-  'track 2': <img src="/images/Track_2.PNG" alt="track 2" height="140%" width="100%" />,
-  'track 3': <img src="/images/Track_3.PNG" alt="track 3" height="140%" width="100%" />,
-  'building_1': <img src="/images/Building_1.PNG" alt="building 1" height="130%" width="120%" />,
-  'building_2': <img src="/images/Building_2.PNG" alt="building 2" height="130%" width="120%" />
+  'track 1': <img src="/images/Track_1.PNG" alt="track 1" height="100%" width="100%" />,
+  'track 2': <img src="/images/Track_2.PNG" alt="track 2" height="100%" width="100%" />,
+  'track 3': <img src="/images/Track_3.PNG" alt="track 3" height="100%" width="100%" />,
+  'building_1': <img src="/images/Building_1.PNG" alt="building 1" height="100%" width="100%" />,
+  'building_2': <img src="/images/Building_2.PNG" alt="building 2" height="100%" width="100%" />
   
 
   
